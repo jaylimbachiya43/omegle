@@ -50,6 +50,7 @@ const Dashboard: React.FC = () => {
         <button className="mt-4 p-2 bg-blue-500 text-white rounded">
           Skip
         </button>
+        <div></div>
       </div>
     </div>
   );
