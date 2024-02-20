@@ -1,23 +1,26 @@
-// dashboard.tsx
-'use client'
-// dashboard.tsx
-import { useEffect, useState } from 'react';
-import VideoChat from '../VideoChat'; // Assuming you have a VideoChat component
+"use client";
+import { useEffect, useState } from "react";
+import VideoChat from "../VideoChat";
+import RandomUserStream from "../RendomeUserStream";
 
 const Dashboard: React.FC = () => {
   const [userStream, setUserStream] = useState<MediaStream | null>(null);
   const [activeUsers, setActiveUsers] = useState<number>(0);
+  const [randomUserStream, setRandomUserStream] = useState<MediaStream | null>(
+    null
+  );
 
   useEffect(() => {
     // Code to fetch user stream goes here
     // For example, using navigator.mediaDevices.getUserMedia
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setUserStream(stream);
       })
       .catch((error) => {
-        console.error('Error accessing user media:', error);
+        console.error("Error accessing user media:", error);
       });
 
     // Simulating active users increment on mount
@@ -41,10 +44,8 @@ const Dashboard: React.FC = () => {
         </span>
         <h2>Random User Stream</h2>
         <div className="bg-gray-300 p-4 rounded mb-4">
-          {/* Placeholder for UI elements of the random user stream */}
-          <p>Username: RandomUser123</p>
-          <p>Location: Random City</p>
-          {/* Add more details or buttons as needed */}
+          {/* Import and use your RandomUserStream component here */}
+          {randomUserStream && <RandomUserStream stream={randomUserStream} />}
         </div>
         <button className="mt-4 p-2 bg-blue-500 text-white rounded">
           Skip
